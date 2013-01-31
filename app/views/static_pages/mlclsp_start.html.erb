@@ -1,0 +1,35 @@
+<% provide(:title, 'MLCLSP') %>
+<h1>Losgrößenplanung mit dem MLCLSP</h1>
+<p>
+  Auf dieser Seite startet die Losgrößenplanung! <br> <br>
+
+  <%= link_to "Hier geht es zur Verwaltung der Produkte!", products_path %><br>
+  <%= link_to "Hier geht es zur Verwaltung der Maschinen!", machines_path %><br>
+  <%= link_to "Hier geht es zur Verwaltung der Perioden!", periods_path %><br>
+  <%= link_to "Hier geht es zur Verwaltung der Produkte-Perioden-Kombinationen!", product_periods_path %><br>
+
+  <%= link_to "Hier geht es zur Verwaltung der Orte!", sites_path %><br>
+  <%= link_to "Hier geht es zur Verwaltung der Angebotsdaten!", supplysites_path %><br>
+  <%= link_to "Hier geht es zur Verwaltung der Nachfragedaten!", demandsites_path %><br>
+  <%= link_to "Hier geht es zur Verwaltung der Transportrelationen!", translinks_path %><br>
+</p>
+
+<br>
+
+
+<% if signed_in? %>
+
+
+
+    <p>
+
+      Nach der Eingabe der Daten können wir nun endlich optimieren!
+
+      <%= button_to "Lösche Transportmengen", :controller => 'translinks', :action => 'delete_production_quantities' %>
+      <%= button_to "Optimiere", :controller => 'translinks', :action => 'optimize' %>
+      <%= button_to "Lies die Transportmengen ein", :controller => 'translinks', :action => 'read_transportation_quantities' %>
+      <%= button_to "Lies den Zielfunktionswert ein", :controller => 'translinks', :action => 'read_and_show_ofv' %>
+
+    </p>
+
+<% end %>

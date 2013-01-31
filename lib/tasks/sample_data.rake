@@ -31,9 +31,8 @@ namespace :db do
                    password: password,
                    password_confirmation: password)
     end
-  end
 
-  task populate: :environment do
+
     S1 = Site.create!(name: "Frankfurt(M)",
                       codename: "FRA")
     S2 = Site.create!(name: "Berlin-Tegel",
@@ -58,8 +57,6 @@ namespace :db do
       Site.create!(name: name,
                    codename: codename)
     end
-
-
 
 
     SuSi1 = Supplysite.create!(site_id: S1.id, supply_quantity: 20)
@@ -89,6 +86,68 @@ namespace :db do
     TraLi11 = Translink.create!(supplysite_id: SuSi3.id, demandsite_id: DeSi3.id, unit_cost: 1, transport_quantity: 0.0)
     TraLi12 = Translink.create!(supplysite_id: SuSi3.id, demandsite_id: DeSi4.id, unit_cost: 6, transport_quantity: 0.0)
 
+
+    Prod1 = Product.create!(name: "P1", setup_time: 20, processing_time: 1,
+                            setup_cost: 200, holding_cost: 40,
+                            initial_inventory: 50, lead_time_periods: 1)
+
+    Prod2 = Product.create!(name: "P2", setup_time: 30, processing_time: 1,
+                            setup_cost: 500, holding_cost: 35,
+                            initial_inventory: 50, lead_time_periods: 1)
+
+    Prod3 = Product.create!(name: "P3", setup_time: 10, processing_time: 1,
+                            setup_cost: 300, holding_cost: 15,
+                            initial_inventory: 50, lead_time_periods: 1)
+
+    Prod4 = Product.create!(name: "P4", setup_time: 20, processing_time: 1,
+                            setup_cost: 1000, holding_cost: 4,
+                            initial_inventory: 50, lead_time_periods: 1)
+
+    Prod5 = Product.create!(name: "P5", setup_time: 10, processing_time: 1,
+                            setup_cost: 300, holding_cost: 3,
+                            initial_inventory: 50, lead_time_periods: 1)
+
+
+    (1..4).each do |n|
+      name = "#{n}"
+      Period.create!(name: name)
+    end
+
+    (1..2).each do |n|
+      name = "m#{n}"
+      Machine.create!(name: name, overtime_cost: 200)
+    end
+
+    (1..2).each do |m|
+      (1..4).each do |n|
+        MachinePeriod.create!(machine_id: m, period_id: n, capacity: 150)
+      end
+    end
+
+    P1t1 = ProductPeriod.create!(product_id: 1, period_id: 1, demand: 10)
+    P1t2 = ProductPeriod.create!(product_id: 1, period_id: 2, demand: 20)
+    P1t3 = ProductPeriod.create!(product_id: 1, period_id: 3, demand: 30)
+    P1t4 = ProductPeriod.create!(product_id: 1, period_id: 4, demand: 80)
+
+    P2t1 = ProductPeriod.create!(product_id: 2, period_id: 1, demand: 20)
+    P2t2 = ProductPeriod.create!(product_id: 2, period_id: 2, demand: 80)
+    P2t3 = ProductPeriod.create!(product_id: 2, period_id: 3, demand: 50)
+    P2t4 = ProductPeriod.create!(product_id: 2, period_id: 4, demand: 90)
+
+    P3t1 = ProductPeriod.create!(product_id: 3, period_id: 1, demand: 0)
+    P3t2 = ProductPeriod.create!(product_id: 3, period_id: 2, demand: 0)
+    P3t3 = ProductPeriod.create!(product_id: 3, period_id: 3, demand: 30)
+    P3t4 = ProductPeriod.create!(product_id: 3, period_id: 4, demand: 0)
+
+    P4t1 = ProductPeriod.create!(product_id: 4, period_id: 1, demand: 0)
+    P4t2 = ProductPeriod.create!(product_id: 4, period_id: 2, demand: 0)
+    P4t3 = ProductPeriod.create!(product_id: 4, period_id: 3, demand: 0)
+    P4t4 = ProductPeriod.create!(product_id: 4, period_id: 4, demand: 80)
+
+    P5t1 = ProductPeriod.create!(product_id: 5, period_id: 1, demand: 0)
+    P5t2 = ProductPeriod.create!(product_id: 5, period_id: 2, demand: 0)
+    P5t3 = ProductPeriod.create!(product_id: 5, period_id: 3, demand: 0)
+    P5t4 = ProductPeriod.create!(product_id: 5, period_id: 4, demand: 0)
 
   end
 end

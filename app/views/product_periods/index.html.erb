@@ -1,0 +1,40 @@
+<h1>Übersicht der Produkte-Perioden</h1>
+<table id="product_periods" class="display">
+  <thead>
+  <tr>
+    <th>Produkt</th>
+    <th>Periode</th>
+    <th>Nachfrage</th>
+    <th>Produktion</th>
+    <th>Lager</th>
+    <th>Rüsten</th>
+    <th></th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+
+
+
+
+  <% @product_periods.each do |product_period| %>
+      <tr>
+        <td><%= product_period.product_name %></td>
+        <td><%= product_period.period_name %></td>
+        <td><%= product_period.demand %></td>
+        <td><%= product_period.production %></td>
+        <td><%= product_period.inventory %></td>
+        <td><%= product_period.setup %></td>
+        <td><%= link_to 'Zeigen', product_period %></td>
+        <td><%= link_to 'Ändern', edit_product_period_path(product_period) %></td>
+
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br/>
+
+<%= link_to 'Neues Produkt anlegen', new_product_period_path %><br>  <br>
+<%= link_to 'Zurück zur Losgrößenplanung', mlclsp_start_path %>
+

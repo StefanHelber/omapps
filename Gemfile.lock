@@ -35,6 +35,10 @@ GEM
     best_in_place (2.0.2)
       jquery-rails
       rails (~> 3.1)
+    better_errors (0.3.2)
+      coderay (>= 1.0.0)
+      erubis (>= 2.7.0)
+    binding_of_caller (0.6.8)
     bootstrap-sass (2.0.4.0)
     bootstrap-will_paginate (0.0.6)
       will_paginate
@@ -207,6 +211,8 @@ DEPENDENCIES
   annotate (= 2.5.0)
   bcrypt-ruby (= 3.0.1)
   best_in_place
+  better_errors
+  binding_of_caller
   bootstrap-sass (= 2.0.4)
   bootstrap-will_paginate (= 0.0.6)
   capybara (= 1.1.2)
