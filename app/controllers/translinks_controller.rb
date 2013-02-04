@@ -151,11 +151,11 @@ class TranslinksController < ApplicationController
       File.delete("Transportmengen_v2.txt")
     end
 
-    system "C:\\Programme\\Gams23.7\\gams Transportmodell_v2"
+    system "C:\\Gams\\Win64\\23.9\\gams Transportmodell_v2"
 
 #    @translinks = Translink.all
     flash.now[:started] = "Die Rechnung wurde gestartet!"
-    render 'static_pages/start'
+    render 'static_pages/transport_start'
 
   end
 

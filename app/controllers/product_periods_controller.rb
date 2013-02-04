@@ -25,14 +25,14 @@ class ProductPeriodsController < ApplicationController
 
   # GET /product_periods/new
   # GET /product_periods/new.json
-  def new
-    @product_period = ProductPeriod.new
+#  def new
+#    @product_period = ProductPeriod.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @product_period }
-    end
-  end
+#    respond_to do |format|
+#      format.html # new.html.erb
+#      format.json { render json: @product_period }
+#    end
+#  end
 
   # GET /product_periods/1/edit
   def edit
@@ -41,19 +41,19 @@ class ProductPeriodsController < ApplicationController
 
   # POST /product_periods
   # POST /product_periods.json
-  def create
-    @product_period = ProductPeriod.new(params[:product_period])
+#  def create
+#    @product_period = ProductPeriod.new(params[:product_period])
 
-    respond_to do |format|
-      if @product_period.save
-        format.html { redirect_to @product_period, notice: 'Produkt wurde erfolgreich angelegt!' }
-        format.json { render json: @product_period, status: :created, location: @product_period }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @product_period.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+#    respond_to do |format|
+#      if @product_period.save
+#        format.html { redirect_to @product_period, notice: 'Produkt wurde erfolgreich angelegt!' }
+#        format.json { render json: @product_period, status: :created, location: @product_period }
+#      else
+#        format.html { render action: "new" }
+#        format.json { render json: @product_period.errors, status: :unprocessable_entity }
+#      end
+#    end
+#  end
 
   # PUT /product_periods/1
   # PUT /product_periods/1.json
@@ -73,15 +73,15 @@ class ProductPeriodsController < ApplicationController
 
   # DELETE /product_periods/1
   # DELETE /product_periods/1.json
-  def destroy
-    @product_period = ProductPeriod.find(params[:id])
-    @product_period.destroy
+#  def destroy
+#    @product_period = ProductPeriod.find(params[:id])
+#    @product_period.destroy
 
-    respond_to do |format|
-      format.html { redirect_to product_periods_url }
-      format.json { head :no_content }
-    end
-  end
+ #   respond_to do |format|
+ #     format.html { redirect_to product_periods_url }
+ #     format.json { head :no_content }
+ #   end
+ # end
 end
 
 

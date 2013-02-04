@@ -11,6 +11,8 @@
   resources :machines
   resources :periods
   resources :product_periods
+  resources :product_products
+  resources :machine_periods
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
 

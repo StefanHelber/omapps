@@ -149,5 +149,11 @@ namespace :db do
     P5t3 = ProductPeriod.create!(product_id: 5, period_id: 3, demand: 0)
     P5t4 = ProductPeriod.create!(product_id: 5, period_id: 4, demand: 0)
 
+    P3P1 = ProductProduct.create!(from_product_id: 3, to_product_id:1, coefficient: 1 )
+    P3P2 = ProductProduct.create!(from_product_id: 3, to_product_id:2, coefficient: 1 )
+    P4P1 = ProductProduct.create!(from_product_id: 4, to_product_id:1, coefficient: 1 )
+    P5P3 = ProductProduct.create!(from_product_id: 5, to_product_id:3, coefficient: 1 )
+    P5P4 = ProductProduct.create!(from_product_id: 5, to_product_id:4, coefficient: 1 )
+
   end
 end

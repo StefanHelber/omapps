@@ -34,11 +34,15 @@ class PeriodsController < ApplicationController
 
     if number_of_missing_periods > 0
       @products = Product.all
+      @machines = Machine.all
       (1..number_of_missing_periods).each do |number|
         name="#{number+@number_of_periods}"
-        Period.create!(name: name)
+        @new_period=Period.create!(name: name)
         @products.each { |pr|
-          ProductPeriod.create(period_id: @period.id, demand: 0)
+          ProductPeriod.create(product_id: pr.id, period_id: @new_period.id, demand: 0)
+        }
+        @machines.each { |ma|
+          MachinePeriod.create(machine_id: ma.id, period_id: @new_period.id, capacity: 0, overtime: 0)
         }
       end
     end

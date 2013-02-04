@@ -9,7 +9,6 @@
     <th>Lager</th>
     <th>Rüsten</th>
     <th></th>
-    <th></th>
   </tr>
   </thead>
   <tbody>
@@ -25,7 +24,6 @@
         <td><%= product_period.production %></td>
         <td><%= product_period.inventory %></td>
         <td><%= product_period.setup %></td>
-        <td><%= link_to 'Zeigen', product_period %></td>
         <td><%= link_to 'Ändern', edit_product_period_path(product_period) %></td>
 
       </tr>
@@ -35,6 +33,5 @@
 
 <br/>
 
-<%= link_to 'Neues Produkt anlegen', new_product_period_path %><br>  <br>
 <%= link_to 'Zurück zur Losgrößenplanung', mlclsp_start_path %>
 

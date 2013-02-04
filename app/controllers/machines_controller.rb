@@ -43,9 +43,15 @@ class MachinesController < ApplicationController
   # POST /machines.json
   def create
     @machine = Machine.new(params[:machine])
+    @periods = Period.all
+
 
     respond_to do |format|
       if @machine.save
+        @periods.each { |pe|
+          MachinePeriod.create(machine_id: @machine.id, period_id: pe.id, capacity: 0, overtime: 0)
+        }
+
         format.html { redirect_to @machine, notice: 'Produkt wurde erfolgreich angelegt!' }
         format.json { render json: @machine, status: :created, location: @machine }
       else
@@ -54,6 +60,13 @@ class MachinesController < ApplicationController
       end
     end
   end
+
+
+
+
+
+
+
 
   # PUT /machines/1
   # PUT /machines/1.json
