@@ -12,58 +12,58 @@ j4
 /
 
 l / 
-l19
-l20
-l21
-l22
-l23
-l24
-l25
-l26
-l27
-l28
-l29
-l30
+l1
+l2
+l3
+l4
+l5
+l6
+l7
+l8
+l9
+l10
+l11
+l12
 /;
 
 LI(l,i) = no;
 LJ(l,j) = no;
 
-LI( 'l19', 'i1') = yes;
-LJ( 'l19', 'j1') = yes;
+LI( 'l1', 'i1') = yes;
+LJ( 'l1', 'j1') = yes;
 
-LI( 'l20', 'i1') = yes;
-LJ( 'l20', 'j2') = yes;
+LI( 'l2', 'i1') = yes;
+LJ( 'l2', 'j2') = yes;
 
-LI( 'l21', 'i1') = yes;
-LJ( 'l21', 'j3') = yes;
+LI( 'l3', 'i1') = yes;
+LJ( 'l3', 'j3') = yes;
 
-LI( 'l22', 'i1') = yes;
-LJ( 'l22', 'j1') = yes;
+LI( 'l4', 'i1') = yes;
+LJ( 'l4', 'j4') = yes;
 
-LI( 'l23', 'i2') = yes;
-LJ( 'l23', 'j1') = yes;
+LI( 'l5', 'i2') = yes;
+LJ( 'l5', 'j1') = yes;
 
-LI( 'l24', 'i2') = yes;
-LJ( 'l24', 'j2') = yes;
+LI( 'l6', 'i2') = yes;
+LJ( 'l6', 'j2') = yes;
 
-LI( 'l25', 'i2') = yes;
-LJ( 'l25', 'j3') = yes;
+LI( 'l7', 'i2') = yes;
+LJ( 'l7', 'j3') = yes;
 
-LI( 'l26', 'i2') = yes;
-LJ( 'l26', 'j4') = yes;
+LI( 'l8', 'i2') = yes;
+LJ( 'l8', 'j4') = yes;
 
-LI( 'l27', 'i3') = yes;
-LJ( 'l27', 'j1') = yes;
+LI( 'l9', 'i3') = yes;
+LJ( 'l9', 'j1') = yes;
 
-LI( 'l28', 'i3') = yes;
-LJ( 'l28', 'j2') = yes;
+LI( 'l10', 'i3') = yes;
+LJ( 'l10', 'j2') = yes;
 
-LI( 'l29', 'i3') = yes;
-LJ( 'l29', 'j3') = yes;
+LI( 'l11', 'i3') = yes;
+LJ( 'l11', 'j3') = yes;
 
-LI( 'l30', 'i3') = yes;
-LJ( 'l30', 'j4') = yes;
+LI( 'l12', 'i3') = yes;
+LJ( 'l12', 'j4') = yes;
 
 
 
@@ -84,18 +84,18 @@ j4  12.0
 
 
 c(l) /
-l19  6.0
-l20  2.0
-l21  6.0
-l22  7.0
-l23  4.0
-l24  9.0
-l25  5.0
-l26  3.0
-l27  8.0
-l28  8.0
-l29  1.0
-l30  6.0
+l1  6.0
+l2  2.0
+l3  6.0
+l4  7.0
+l5  4.0
+l6  9.0
+l7  5.0
+l8  3.0
+l9  8.0
+l10  8.0
+l11  1.0
+l12  6.0
 /
 
 ;
