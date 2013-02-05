@@ -93,19 +93,19 @@ namespace :db do
 
     Prod2 = Product.create!(name: "P2", setup_time: 30, processing_time: 1,
                             setup_cost: 500, holding_cost: 35,
-                            initial_inventory: 50, lead_time_periods: 1)
+                            initial_inventory: 120, lead_time_periods: 1)
 
     Prod3 = Product.create!(name: "P3", setup_time: 10, processing_time: 1,
                             setup_cost: 300, holding_cost: 15,
-                            initial_inventory: 50, lead_time_periods: 1)
+                            initial_inventory: 100, lead_time_periods: 1)
 
     Prod4 = Product.create!(name: "P4", setup_time: 20, processing_time: 1,
                             setup_cost: 1000, holding_cost: 4,
-                            initial_inventory: 50, lead_time_periods: 1)
+                            initial_inventory: 110, lead_time_periods: 1)
 
     Prod5 = Product.create!(name: "P5", setup_time: 10, processing_time: 1,
                             setup_cost: 300, holding_cost: 3,
-                            initial_inventory: 50, lead_time_periods: 1)
+                            initial_inventory: 80, lead_time_periods: 1)
 
 
     (1..4).each do |n|
@@ -154,6 +154,12 @@ namespace :db do
     P4P1 = ProductProduct.create!(from_product_id: 4, to_product_id:1, coefficient: 1 )
     P5P3 = ProductProduct.create!(from_product_id: 5, to_product_id:3, coefficient: 1 )
     P5P4 = ProductProduct.create!(from_product_id: 5, to_product_id:4, coefficient: 1 )
+
+    P1M1 = ProductMachine.create!(product_id: 1, machine_id:1)
+    P2M1 = ProductMachine.create!(product_id: 2, machine_id:1)
+    P5M1 = ProductMachine.create!(product_id: 5, machine_id:1)
+    P3M2 = ProductMachine.create!(product_id: 3, machine_id:2)
+    P4M2 = ProductMachine.create!(product_id: 4, machine_id:2)
 
   end
 end

@@ -6,13 +6,5 @@ class ProductProduct < ActiveRecord::Base
   belongs_to :from_product, class_name: "Product"
   belongs_to :to_product, class_name: "Product"
 
-  def from_product_name
-    self.from_product.name
-  end
-
-  def to_product_name
-    self.to_product.name
-  end
-
 end
 

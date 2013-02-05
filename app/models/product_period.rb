@@ -4,12 +4,5 @@ class ProductPeriod < ActiveRecord::Base
   belongs_to :product
   belongs_to :period
 
-  def product_name
-    self.product.name
-  end
-
-  def period_name
-    self.period.name
-  end
 
 end

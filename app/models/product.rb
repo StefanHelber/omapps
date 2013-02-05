@@ -3,6 +3,8 @@ class Product < ActiveRecord::Base
 
   has_many :product_periods, :dependent => :destroy
   has_many :product_products, :dependent => :destroy
-  accepts_nested_attributes_for :product_products
+  has_many :product_machines, :dependent => :destroy
+
+#  accepts_nested_attributes_for :product_products
 
 end

@@ -18,8 +18,8 @@
 
   <% @product_periods.each do |product_period| %>
       <tr>
-        <td><%= product_period.product_name %></td>
-        <td><%= product_period.period_name %></td>
+        <td><%= product_period.product.name %></td>
+        <td><%= product_period.period.name %></td>
         <td><%= product_period.demand %></td>
         <td><%= product_period.production %></td>
         <td><%= product_period.inventory %></td>
@@ -32,6 +32,14 @@
 </table>
 
 <br/>
+
+
+
+<br />
+
+<% if @objective_function_value!=nil %>
+    Die Kosten betragen <%=   @objective_function_value %> Geldeinheiten!   <br>   <br>
+<% end %>
 
 <%= link_to 'Zurück zur Losgrößenplanung', mlclsp_start_path %>
 

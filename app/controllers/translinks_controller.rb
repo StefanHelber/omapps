@@ -151,7 +151,7 @@ class TranslinksController < ApplicationController
       File.delete("Transportmengen_v2.txt")
     end
 
-    system "C:\\Gams\\Win64\\23.9\\gams Transportmodell_v2"
+    system "C:\\Programme\\GAMS23.7\\gams Transportmodell_v2"
 
 #    @translinks = Translink.all
     flash.now[:started] = "Die Rechnung wurde gestartet!"
@@ -187,7 +187,7 @@ class TranslinksController < ApplicationController
   end
 
 
-  def delete_production_quantities
+  def delete_transportation_quantities
 
     if File.exist?("Transportmengen_v2.txt")
       File.delete("Transportmengen_v2.txt")

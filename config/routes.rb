@@ -1,4 +1,4 @@
-  SampleApp::Application.routes.draw do
+SampleApp::Application.routes.draw do
 
   post "periods/change", as: :change_periods
 
@@ -12,6 +12,7 @@
   resources :periods
   resources :product_periods
   resources :product_products
+  resources :product_machines
   resources :machine_periods
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
@@ -32,7 +33,15 @@
   match 'translinks/read_and_show_ofv', :to => 'translinks#read_and_show_ofv'
   match 'translinks/read_transportation_quantities', :to => 'translinks#read_transportation_quantities'
   match 'translinks/optimize', :to => 'translinks#optimize'
-  match 'translinks/delete_production_quantities', :to => 'translinks#delete_production_quantities'
+  match 'translinks/delete_transportation_quantities', :to => 'translinks#delete_transportation_quantities'
+
+  match 'product_periods/read_and_show_ofv', :to => 'product_periods#read_and_show_ofv'
+  match 'product_periods/read_optimization_results', :to => 'product_periods#read_optimization_results'
+  match 'product_periods/optimize', :to => 'product_periods#optimize'
+  match 'product_periods/delete_old_plan', :to => 'product_periods#delete_old_plan'
+  match 'product_periods/show_index_page', :to => 'product_periods#show_index_page'
+
+
 
 
 
