@@ -192,7 +192,7 @@ class ProductPeriodsController < ApplicationController
       File.delete("MLCLSP_solution.txt")
     end
 
-    system "C:\\Programme\\GAMS23.7\\gams MLCLSP_omapps"
+    system "C:\\GAMS\\win64\\23.9\\gams MLCLSP_omapps"
 
     flash.now[:started] = "Die Rechnung wurde gestartet!"
 
