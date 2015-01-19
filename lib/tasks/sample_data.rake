@@ -161,5 +161,31 @@ namespace :db do
     P3M2 = ProductMachine.create!(product_id: 3, machine_id:2)
     P4M2 = ProductMachine.create!(product_id: 4, machine_id:2)
 
+
+    Topic1 = Topic.create!(shortcode: "B1",
+                           title: "Neuronale Netze sind schön")
+
+    Topic2 = Topic.create!(shortcode: "B2",
+                           title: "Elektromobilität ist auch schön")
+
+    Topic3 = Topic.create!(shortcode: "H1",
+                           title: "Call Center sind schön")
+
+    Topic4 = Topic.create!(shortcode: "H2",
+                           title: "Fließbänder sind auch schön")
+
+    12.times do |n|
+      name = Faker::Name.name
+#      name = "Student-#{n+1}"
+     Student.create!(name: name)
+    end
+
+    Team1 = Team.create!(name: "Die krossen Krabben")
+    Team2 = Team.create!(name: "Die ausgelassenenen Niedersachsen")
+    Team3 = Team.create!(name: "Die Fischbrötchen")
+
+
+
+
   end
 end

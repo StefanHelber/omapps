@@ -1,0 +1,126 @@
+neuen Eintrag "Seminar" im Apps-Menü anlegen:
+
+  <li class="divider"></li>
+  <li><%= link_to "Seminar", seminar_start_path %></li>
+  
+in \layouts\_header.html.erb
+
+Problem:   seminar_start_path ist nicht definiert
+
+
+Eintrag in config.rb:
+
+match '/seminar_start', to: 'static_pages#seminar_start'
+
+Problem: Seite gibt es nicht (kein View)
+
+Daher nun Datei "seminar_start.html.erb" einfügen (zunächst Inhalte wie bei Transportplanung)
+
+_____________________________________________________________________________
+
+
+<% provide(:title, 'Seminarplanung') %>
+<h1>Zuordnung von Studententeams und Seminarthemen</h1>
+<p>
+  Auf dieser Seite startet (für angemeldete Nutzer) die Seminarplanung!    <br>     <br>
+
+  <% if signed_in? %>
+
+      <%= link_to "Hier geht es zur Verwaltung der Themen!", topics_path %><br>
+      <%= link_to "Hier geht es zur Verwaltung der Studenten!", students_path %><br>
+      <%= link_to "Hier geht es zur Verwaltung der Teams!", teams_path %><br>
+     </p>
+
+      <br>
+
+
+      <p>
+
+        Hier stehen noch die Links für die Transportplanung, das funktioniert so nicht!
+
+        <%= button_to "Lösche Transportmengen", :controller => 'translinks', :action =>  'delete_transportation_quantities'  %>
+        <%= button_to "Optimiere", :controller => 'translinks', :action =>  'optimize'  %>
+        <%= button_to "Lies die Transportmengen ein", :controller => 'translinks', :action =>  'read_transportation_quantities'  %>
+        <%= button_to "Lies den Zielfunktionswert ein", :controller => 'translinks', :action =>  'read_and_show_ofv'  %>
+
+      </p>
+
+  <% end %>
+
+_____________________________________________________________________________
+
+Das funktioniert nun wieder nicht, weil "topics_path", "students_path" und "teams_path" nicht definiert ist. (undefined local variable or method `topics_path' )
+
+Also führen wir nun entsprechende Ressourcen in der "config.rb" ein:
+
+  resources :topics
+  resources :students
+  resources :teams
+  
+Nun wird die Startseite zumindest angezeigt, funktioniert aber natürlich noch nicht, wenn man auf die Verwaltung der topics etc. klickt.
+
+Wir fangen an mit den Themen (Topics) und bauen zunächst ein Datenmodell. Dazu überlegen wir uns, dass jedes Thema einen Titel (und sonst nichts) hat.
+
+In der Console geben wir ein:
+
+rails generate model Topic shortcode:string title:string
+
+dann:
+
+bundle exec rake db:migrate
+
+um die neue Tabelle anzulegen
+
+
+Nun wollen wir diese anzeigen und ändern können. Dazu kopieren wir die Datenen im Verzeichnis \app\views\sites in das neue Verzeichnis \app\views\topics und nehmen in den Dateien die entsprechenden Anpassungen vor, analog machen wir es bei dem Controller.
+
+Dann fügen wir im Verzeichnis \app\assets\javascript\ die Datei "topics.js.coffee" ein mit dem folgenden Inhalt:
+
+___________________________________________________________________________________
+
+# Place all the behaviors and hooks related to the matching controller here.
+# All this logic will automatically be available in application.js.
+# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+jQuery ->
+  $('#topics').dataTable
+    sPaginationType: "full_numbers"
+    bJQueryUI: true
+
+jQuery ->
+  $('.best_in_place').best_in_place()
+  
+___________________________________________________________________________________
+
+Damit erhalten wir in der Anzeige auch schöne Datentabellen.
+
+Außerdem fügen wir der Datei "sample_data.rake" noch folgende Daten hinzu:
+
+_____________________________________________________________________________
+    Topic1 = Topic.create!(shortcode: "B1",
+                           title: "Neuronale Netze sind schön")
+
+    Topic2 = Topic.create!(shortcode: "B2",
+                           title: "Elektromobilität ist auch schön")
+
+    Topic3 = Topic.create!(shortcode: "H1",
+                           title: "Call Center sind schön")
+
+    Topic4 = Topic.create!(shortcode: "H2",
+                           title: "Fließbänder sind auch schön")
+
+_____________________________________________________________________________
+
+
+Nun folgende
+bundle exec rake db:reset
+bundle exec rake db:populate
+bundle exec rake db:test:prepare
+
+und wir haben zumindest die Themen für unsere Planung. Analog machen wir das mit "Student" und "Team" als Datenmodelle.
+
+  
+  
+  
+  
+
+
