@@ -1,7 +1,11 @@
 <% provide(:title, 'Transportplanung') %>
 <h1>Klassisches Transportmodell</h1>
 <p>
-Auf dieser Seite startet die Transportplanung!    <br>     <br>
+Auf dieser Seite startet (für angemeldete Nutzer) die Transportplanung!    <br>     <br>
+
+<% if signed_in? %>
+
+
 
 <%= link_to "Hier geht es zur Verwaltung der Orte!", sites_path %><br>
 <%= link_to "Hier geht es zur Verwaltung der Angebotsdaten!", supplysites_path %><br>
@@ -10,10 +14,6 @@ Auf dieser Seite startet die Transportplanung!    <br>     <br>
 </p>
 
 <br>
-
-
-<% if signed_in? %>
-
 
 
 <p>

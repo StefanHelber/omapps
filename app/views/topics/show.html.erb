@@ -1,0 +1,18 @@
+<!--<p id="notice"><%= notice %></p> -->
+
+<p>
+  <b>Titelcode:</b>
+  <%= @topic.shortcode %>
+</p>
+
+
+<p>
+  <b>Title:</b>
+  <%= best_in_place @topic, :title %>
+</p>
+
+
+<%= link_to 'Ändern', edit_topic_path(@topic) %> |
+<%= link_to 'Zurück', topics_path %>
+
+

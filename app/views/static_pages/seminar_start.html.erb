@@ -1,0 +1,29 @@
+<% provide(:title, 'Seminarplanung') %>
+<h1>Zuordnung von Studententeams und Seminarthemen</h1>
+<p>
+  Auf dieser Seite startet (für angemeldete Nutzer) die Seminarplanung!    <br>     <br>
+
+  <% if signed_in? %>
+
+
+
+      <%= link_to "Hier geht es zur Verwaltung der Themen!", topics_path %><br>
+      <%= link_to "Hier geht es zur Verwaltung der Studenten!", students_path %><br>
+      <%= link_to "Hier geht es zur Verwaltung der Teams!", teams_path %><br>
+       </p>
+
+      <br>
+
+
+      <p>
+
+        Hier stehen noch die Links für die Transportplanung, das funktioniert so nicht!
+
+        <%= button_to "Lösche Transportmengen", :controller => 'translinks', :action =>  'delete_transportation_quantities'  %>
+        <%= button_to "Optimiere", :controller => 'translinks', :action =>  'optimize'  %>
+        <%= button_to "Lies die Transportmengen ein", :controller => 'translinks', :action =>  'read_transportation_quantities'  %>
+        <%= button_to "Lies den Zielfunktionswert ein", :controller => 'translinks', :action =>  'read_and_show_ofv'  %>
+
+      </p>
+
+  <% end %>
