@@ -118,7 +118,44 @@ bundle exec rake db:test:prepare
 
 und wir haben zumindest die Themen für unsere Planung. Analog machen wir das mit "Student" und "Team" als Datenmodelle.
 
+Nun bauen wir eine Tabelle zum Verknüpfen der Studenten und Themen auf. Jeder Eintrag besteht aus einer Studenten-id, einer Themen-id und einem numerischen Präferenzwert.
+
+rails generate model StudentTopic student_id:integer topic_id:integer preference:integer
+
+Wir orientieren uns an der Verknüpfung von Produkten zu Maschinen und kopieren entsprechend Views und Controller!
+
+Analog ergänzen wir die "config.rb" mit dem Eintrag:
+
+ resources :student_topics
+
+und fügen der "seminar_start.html.erb" die Zeile
+
+  <%= link_to "Verwaltung der Studenten-Themen-Kombinationen!", student_topics_path %><br>
+
+hinzu. Zudem fügen wir die Datei "student_topic.js.coffee" hinzu:
+
+____________________________________________________________________________________
+# Place all the behaviors and hooks related to the matching controller here.
+# All this logic will automatically be available in application.js.
+# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+jQuery ->
+  $('#student_topics').dataTable
+    sPaginationType: "full_numbers"
+    bJQueryUI: true
+
+jQuery ->
+  $('.best_in_place').best_in_place()
   
+____________________________________________________________________________________
+  
+ Nun müssen noch die Änderungen an dem Modellen vorgenommen werden, die die Verknüpfungen durchsuchbar machen.
+
+Zunächst bauen wir eine Optimierung, die ohne Teams auskommt. Die Variante mit Teams kann als Hausaufgabe betrachet werden.
+
+Für die Variante ohne Teams fügen wir der Tabelle für die Student-Thema-Relation eine Bool'sche Variable hinzu:
+
+rails generate migration add_assigned_to_student_topics assigned:boolean
+ 
   
   
   

@@ -5,6 +5,7 @@ SampleApp::Application.routes.draw do
   resources :topics
   resources :students
   resources :teams
+  resources :student_topics
 
   resources :translinks
   resources :demandsites
