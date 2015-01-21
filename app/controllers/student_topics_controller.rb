@@ -84,6 +84,34 @@ class StudentTopicsController < ApplicationController
   end
 
 
+
+
+
+
+  def erase_assignments
+
+    if File.exist?("Seminarzuordnung.txt")
+      File.delete("Seminarzuordnung.txt")
+    end
+    if File.exist?("Seminar-Zielfunktionswert.txt")
+      File.delete("Seminar-Zielfunktionswert.txt")
+    end
+
+    @student_topics = StudentTopic.all
+    @student_topics.each { |li|
+      li.assigned=false
+      li.save
+    }
+
+    @objective_function_value=nil
+
+    render :template => "student_topics/index"
+
+  end
+
+
+
+
 end
 
 private
