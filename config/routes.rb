@@ -2,6 +2,11 @@ SampleApp::Application.routes.draw do
 
   post "periods/change", as: :change_periods
 
+  resources :topics
+  resources :students
+  resources :teams
+  resources :student_topics
+
   resources :translinks
   resources :demandsites
   resources :supplysites
@@ -29,6 +34,8 @@ SampleApp::Application.routes.draw do
   match '/transport_start', to: 'static_pages#transport_start'
   match '/mlclsp_start', to: 'static_pages#mlclsp_start'
 
+  match '/seminar_start', to: 'static_pages#seminar_start'
+
 
   match 'translinks/read_and_show_ofv', :to => 'translinks#read_and_show_ofv'
   match 'translinks/read_transportation_quantities', :to => 'translinks#read_transportation_quantities'
@@ -41,6 +48,7 @@ SampleApp::Application.routes.draw do
   match 'product_periods/delete_old_plan', :to => 'product_periods#delete_old_plan'
   match 'product_periods/show_index_page', :to => 'product_periods#show_index_page'
 
+  match 'student_topics/erase_assignments', :to => 'student_topics#erase_assignments'
 
 
 

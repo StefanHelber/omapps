@@ -1,0 +1,28 @@
+<h1>Übersicht der Teams</h1>
+<table  id="teams" class="display">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+
+  <% @teams.each do |team| %>
+      <tr>
+        <td><%= team.name %></td>
+         <td><%= link_to 'Zeigen', team %></td>
+        <td><%= link_to 'Ändern', edit_team_path(team) %></td>
+        <td><%= link_to 'Löschen', team, method: :delete, data: {confirm: 'Sind Sie sicher?'} %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br/>
+
+<%= link_to 'Neues Team anlegen', new_team_path %><br>  <br>
+<%= link_to 'Zurück zur Seminarplanung', seminar_start_path %>
+

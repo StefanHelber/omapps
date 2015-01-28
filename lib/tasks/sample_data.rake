@@ -161,5 +161,52 @@ namespace :db do
     P3M2 = ProductMachine.create!(product_id: 3, machine_id:2)
     P4M2 = ProductMachine.create!(product_id: 4, machine_id:2)
 
+
+    Topic1 = Topic.create!(shortcode: "B1",
+                           title: "Neuronale Netze sind schön")
+
+    Topic2 = Topic.create!(shortcode: "B2",
+                           title: "Elektromobilität ist auch schön")
+
+    Topic3 = Topic.create!(shortcode: "H1",
+                           title: "Call Center sind schön")
+
+    Topic4 = Topic.create!(shortcode: "H2",
+                           title: "Fließbänder sind auch schön")
+
+    4.times do |n|
+      name = Faker::Name.name
+#      name = "Student-#{n}"
+     Student.create!(name: name)
+    end
+
+    St1To1 = StudentTopic.create!(student_id: 1, topic_id:1, preference: 5)
+    St1To2 = StudentTopic.create!(student_id: 1, topic_id:2, preference: 4)
+    St1To3 = StudentTopic.create!(student_id: 1, topic_id:3, preference: 3)
+    St1To4 = StudentTopic.create!(student_id: 1, topic_id:4, preference: 1)
+
+    St2To1 = StudentTopic.create!(student_id: 2, topic_id:1, preference: 1)
+    St2To2 = StudentTopic.create!(student_id: 2, topic_id:2, preference: 1)
+    St2To3 = StudentTopic.create!(student_id: 2, topic_id:3, preference: 3)
+    St2To4 = StudentTopic.create!(student_id: 2, topic_id:4, preference: 5)
+
+    St3To1 = StudentTopic.create!(student_id: 3, topic_id:1, preference: 5)
+    St3To2 = StudentTopic.create!(student_id: 3, topic_id:2, preference: 2)
+    St3To3 = StudentTopic.create!(student_id: 3, topic_id:3, preference: 1)
+    St3To4 = StudentTopic.create!(student_id: 3, topic_id:4, preference: 5)
+
+    St4To1 = StudentTopic.create!(student_id: 4, topic_id:1, preference: 4)
+    St4To2 = StudentTopic.create!(student_id: 4, topic_id:2, preference: 1)
+    St4To3 = StudentTopic.create!(student_id: 4, topic_id:3, preference: 3)
+    St4To4 = StudentTopic.create!(student_id: 4, topic_id:4, preference: 5)
+
+
+    Team1 = Team.create!(name: "Die krossen Krabben")
+    Team2 = Team.create!(name: "Die ausgelassenenen Niedersachsen")
+    Team3 = Team.create!(name: "Die Fischbrötchen")
+
+
+
+
   end
 end
