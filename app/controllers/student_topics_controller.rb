@@ -111,6 +111,35 @@ class StudentTopicsController < ApplicationController
 
 
 
+  def read_assignments
+
+    if File.exist?("Seminarzuordnung.txt")
+
+      fi=File.open("Seminarzuordnung.txt", "r")
+      fi.each { |line| # printf(f,line)
+        sa=line.split(";")
+        sa0=sa[0].delete "l "
+        sa3=sa[3].delete " \n"
+        al=StudentTopic.find_by_id(sa0)
+        al.transport_quantity=sa3
+        al.save
+
+      }
+      fi.close
+      @translinks = Translink.all
+      render :template => "translinks/index"
+    else
+      flash.now[:not_available] = "Transportmengen wurden noch nicht berechnet!"
+      @translinks = Translink.all
+      render :template => "translinks/index"
+    end
+
+
+  end
+
+
+
+
 
 end
 

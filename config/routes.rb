@@ -48,7 +48,7 @@ SampleApp::Application.routes.draw do
   match 'product_periods/delete_old_plan', :to => 'product_periods#delete_old_plan'
   match 'product_periods/show_index_page', :to => 'product_periods#show_index_page'
 
-  match 'student_topics/erase_assigments', :to => 'student_topics#erase_assigments'
+  match 'student_topics/erase_assignments', :to => 'student_topics#erase_assignments'
 
 
 

@@ -1,0 +1,22 @@
+B 2 C o m p i l a t i o n
+B 220 Include File Summary
+B 233 E x e c u t i o n
+I 234 c
+B 245 Equation Listing    SOLVE seminar_v1 Using MIP From line 178
+D 246 Zielfunktion
+D 257 JederEinThema
+D 274 MaximaleZahlStudentenJeThema
+D 288 MinimaleZahlStudentenJeThema
+B 304 Column Listing      SOLVE seminar_v1 Using MIP From line 178
+E 305 Z
+E 313 x
+B 344 Model Statistics    SOLVE seminar_v1 Using MIP From line 178
+B 360 Solution Report     SOLVE seminar_v1 Using MIP From line 178
+F 394 Zielfunktion
+F 402 JederEinThema
+F 412 MaximaleZahlStudentenJeThema
+F 421 MinimaleZahlStudentenJeThema
+G 425 Z
+G 431 x
+B 463 E x e c u t i o n
+I 464 x

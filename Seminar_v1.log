@@ -1,0 +1,90 @@
+
+--- Job Seminar_v1.gms Start 01/28/15 10:51:08 WEX-WEI 23.9.5 x86_64/MS Windows     
+GAMS Rev 239  Copyright (C) 1987-2012 GAMS Development. All rights reserved
+Licensee: Lehrstuhl fuer Produktionswirtschaft           G120416:1115AB-GEN
+          Leibniz University Hannover                                DC8871
+          License for teaching and research at degree granting institutions
+--- Starting compilation
+--- Seminar_v1.gms(17) 2 Mb
+--- .Seminar_Test_Input.inc(128) 3 Mb
+--- Seminar_v1.gms(84) 3 Mb
+--- Starting execution: elapsed 0:00:00.004
+--- Seminar_v1.gms(176) 4 Mb
+--- Generating MIP model seminar_v1
+--- Seminar_v1.gms(178) 4 Mb
+---   14 rows  21 columns  81 non-zeroes
+---   20 discrete-columns
+***
+***   20 Integer +INF Bounds have been reset to 100
+***
+--- Executing CPLEX: elapsed 0:00:00.092
+
+IBM ILOG CPLEX   Jul  4, 2012 23.9.5 WEX 36376.36401 WEI x86_64/MS Windows
+Cplex 12.4.0.1
+
+Reading data...
+Starting Cplex...
+Tried aggregator 1 time.
+MIP Presolve eliminated 1 rows and 1 columns.
+Reduced MIP has 13 rows, 20 columns, and 60 nonzeros.
+Reduced MIP has 20 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Probing time =    0.00 sec.
+Tried aggregator 1 time.
+Presolve time =    0.00 sec.
+Found feasible solution after 0.00 sec.  Objective = 11.0000
+Probing time =    0.00 sec.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: none, using 1 thread.
+Tried aggregator 1 time.
+No LP presolve or aggregator reductions.
+Presolve time =    0.00 sec.
+
+Iteration      Dual Objective            In Variable           Out Variable
+     1               1.000000                  x(l1)JederEinThema(i1) slack
+     2               2.000000                  x(l5)JederEinThema(i2) slack
+     3               3.000000                  x(l9)JederEinThema(i3) slack
+     4               4.000000                 x(l13)JederEinThema(i4) slack
+     5               5.000000                 x(l17)JederEinThema(i5) slack
+     6               8.000000                 x(l18)MaximaleZahlStude slack
+     7               9.000000                 x(l15)MinimaleZahlStude slack
+Root relaxation solution time =    0.03 sec.
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+*     0+    0                           11.0000                      7     --- 
+      0     0        cutoff             11.0000                      7    0.00%
+
+Root node processing (before b&c):
+  Real time             =    0.03
+Sequential b&c:
+  Real time             =    0.00
+                          -------
+Total (root+branch&cut) =    0.03 sec.
+MIP status(101): integer optimal solution
+Fixing integer variables, and solving final LP...
+Tried aggregator 1 time.
+LP Presolve eliminated 14 rows and 21 columns.
+All rows and columns eliminated.
+Presolve time =    0.00 sec.
+Fixed MIP status(1): optimal
+
+Proven optimal solution.
+
+MIP Solution:           11.000000    (7 iterations, 0 nodes)
+Final Solve:            11.000000    (0 iterations)
+
+Best possible:          11.000000
+Absolute gap:            0.000000
+Relative gap:            0.000000
+
+--- Restarting execution
+--- Seminar_v1.gms(178) 2 Mb
+--- Reading solution for model seminar_v1
+--- Executing after solve: elapsed 0:00:00.205
+--- Seminar_v1.gms(206) 3 Mb
+--- Putfile outputfile1 C:\Sites\omapps\Seminarzuordnung.txt
+--- Putfile outputfile2 C:\Sites\omapps\Seminar-Zielfunktionswert.txt
+*** Status: Normal completion
+--- Job Seminar_v1.gms Stop 01/28/15 10:51:08 elapsed 0:00:00.208
