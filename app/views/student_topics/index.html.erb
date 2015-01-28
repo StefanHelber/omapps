@@ -30,6 +30,14 @@
 
 <br/>
 
+
+
+<% if @objective_function_value!=nil %>
+    Der Zielfunktionswert beträgt: <%=   @objective_function_value %>    <br>   <br>
+<% end %>
+
+
+
 <%= link_to 'Neue Studenten-Themen-Relation anlegen', new_student_topic_path %><br>  <br>
 
 

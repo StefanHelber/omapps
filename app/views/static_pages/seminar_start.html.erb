@@ -19,15 +19,12 @@
 
       <p>
 
-        Hier stehen noch die Links für die Transportplanung, das funktioniert so nicht!
-
-
         Nach der Eingabe der Daten können wir nun endlich optimieren!
 
         <%= button_to "Lösche die Zuordnung", :controller => 'student_topics', :action =>  'erase_assignments'  %>
-        <%= button_to "Optimiere", :controller => 'translinks', :action =>  'optimize'  %>
-        <%= button_to "Lies die Transportmengen ein", :controller => 'translinks', :action =>  'read_transportation_quantities'  %>
-        <%= button_to "Lies den Zielfunktionswert ein", :controller => 'translinks', :action =>  'read_and_show_ofv'  %>
+        <%= button_to "Optimiere", :controller => 'student_topics', :action =>  'optimize'  %>
+        <%= button_to "Lies die Zuordnung ein", :controller => 'student_topics', :action =>  'read_assignments'  %>
+        <%= button_to "Lies den Zielfunktionswert ein", :controller => 'student_topics', :action =>  'read_and_show_ofv'  %>
 
 
       </p>

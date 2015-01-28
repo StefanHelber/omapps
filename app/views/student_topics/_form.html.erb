@@ -26,7 +26,7 @@
 
     <div class="field">
       <%= f.label 'Präferenz' %><br />
-      <%= f.text_field :preference %>
+      <%= f.select :preference, 1..5 %>
     </div>
 
     <div class="actions">

@@ -111,6 +111,62 @@ class StudentTopicsController < ApplicationController
 
 
 
+
+
+  def optimize
+
+    if File.exist?("Seminar_Test_Input.inc")
+      File.delete("Seminar_Test_Input.inc")
+    end
+    f=File.new("Seminar_Test_Input.inc", "w")
+    printf(f, "set i / \n")
+    @students = Student.all
+    @students.each { |stu| printf(f, "i" + stu.id.to_s + "\n") }
+    printf(f, "/" + "\n\n")
+
+    printf(f, "j / \n")
+    @topics = Topic.all
+    @topics.each { |top| printf(f, "j" + top.id.to_s + "\n") }
+    printf(f, "/" + "\n\n")
+
+    printf(f, "l / \n")
+    @student_topics = StudentTopic.all
+    @student_topics.each { |stutop| printf(f, "l" + stutop.id.to_s + "\n") }
+    printf(f, "/;" + "\n\n")
+
+
+    printf(f, "LI(l,i) = no;\n")
+    printf(f, "LJ(l,j) = no;\n\n")
+
+    @student_topics.each do |stutop|
+      printf(f, "LI( 'l" + stutop.id.to_s + "', 'i" + stutop.student_id.to_s + "') = yes;\n")
+      printf(f, "LJ( 'l" + stutop.id.to_s + "', 'j" + stutop.topic_id.to_s + "') = yes;\n\n")
+    end
+    printf(f, "\n\n")
+
+    printf(f, "Parameter\n")
+
+    printf(f, "c(l) /\n")
+
+    @student_topics.each { |stutop| printf(f, "l" + stutop.id.to_s + "  " + stutop.preference.to_s + "\n") }
+    printf(f, "/" + "\n\n")
+
+    printf(f, ";\n")
+    f.close
+
+
+    if File.exist?("Seminarzuordnung.txt")
+      File.delete("Seminarzuordnung.txt")
+    end
+
+    system "C:\\Programme\\Gams23.7\\gams Seminar_v1"
+
+    flash.now[:started] = "Die Rechnung wurde gestartet!"
+    render 'static_pages/seminar_start'
+
+  end
+
+
   def read_assignments
 
     if File.exist?("Seminarzuordnung.txt")
@@ -121,21 +177,46 @@ class StudentTopicsController < ApplicationController
         sa0=sa[0].delete "l "
         sa3=sa[3].delete " \n"
         al=StudentTopic.find_by_id(sa0)
-        al.transport_quantity=sa3
+        if sa3.to_i > 0
+          al.assigned=true
+        else
+          al.assigned=false
+        end
         al.save
-
       }
       fi.close
-      @translinks = Translink.all
-      render :template => "translinks/index"
+      @student_topics = StudentTopic.all
+      render :template => "student_topics/index"
     else
-      flash.now[:not_available] = "Transportmengen wurden noch nicht berechnet!"
-      @translinks = Translink.all
-      render :template => "translinks/index"
+      flash.now[:not_available] = "Zuordnung wurde noch nicht ermittelt!"
+      @student_topics = StudentTopic.all
+      render :template => "student_topics/index"
     end
 
 
   end
+
+
+
+
+  def read_and_show_ofv
+
+    if File.exist?("Seminar-Zielfunktionswert.txt")
+      fi=File.open("Seminar-Zielfunktionswert.txt", "r")
+      line=fi.readline
+      fi.close
+      sa=line.split(" ")
+      @objective_function_value=sa[1]
+    else
+      @objective_function_value=nil
+      flash.now[:not_available] = "Zielfunktionswert wurde noch nicht berechnet!"
+
+    end
+
+    @student_topics = StudentTopic.all
+    render :template => "student_topics/index"
+  end
+
 
 
 
